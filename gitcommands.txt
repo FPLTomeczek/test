@@ -1,0 +1,215 @@
+Microsoft Windows [Version 10.0.19044.1706]
+(c) Microsoft Corporation. Wszelkie prawa zastrzeżone.
+
+C:\Users\tomas>git --version
+git version 2.35.3.windows.1
+
+C:\Users\tomas>cd Desktop
+
+C:\Users\tomas\Desktop>mkdir test_repo
+
+C:\Users\tomas\Desktop>cd test_repo
+
+C:\Users\tomas\Desktop\test_repo>git init
+Initialized empty Git repository in C:/Users/tomas/Desktop/test_repo/.git/
+
+C:\Users\tomas\Desktop\test_repo>git commit
+On branch master
+
+Initial commit
+
+nothing to commit (create/copy files and use "git add" to track)
+
+C:\Users\tomas\Desktop\test_repo>git add readme.md
+
+C:\Users\tomas\Desktop\test_repo>git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   readme.md
+
+
+C:\Users\tomas\Desktop\test_repo>git commit -m "added readme.md"
+[master (root-commit) 18b5d15] added readme.md
+ 1 file changed, 1 insertion(+)
+ create mode 100644 readme.md
+
+C:\Users\tomas\Desktop\test_repo>git status
+On branch master
+nothing to commit, working tree clean
+
+C:\Users\tomas\Desktop\test_repo>git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   readme.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+C:\Users\tomas\Desktop\test_repo>git add .
+
+C:\Users\tomas\Desktop\test_repo>git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   readme.md
+
+
+C:\Users\tomas\Desktop\test_repo>git commit -m "made changes"
+[master d7ad82b] made changes
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+C:\Users\tomas\Desktop\test_repo>git checkout -b new
+Switched to a new branch 'new'
+
+C:\Users\tomas\Desktop\test_repo>git add .
+
+C:\Users\tomas\Desktop\test_repo>git commit -m "first commit on new branch"
+[new 3335d18] first commit on new branch
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+C:\Users\tomas\Desktop\test_repo>git checkout master
+Switched to branch 'master'
+
+C:\Users\tomas\Desktop\test_repo>git add .
+
+C:\Users\tomas\Desktop\test_repo>git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   test.py
+
+
+C:\Users\tomas\Desktop\test_repo>git commit -m "new py file"
+[master 8d729a1] new py file
+ 1 file changed, 1 insertion(+)
+ create mode 100644 test.py
+
+C:\Users\tomas\Desktop\test_repo>git checkout new
+Switched to branch 'new'
+
+C:\Users\tomas\Desktop\test_repo>git merge master
+Merge made by the 'ort' strategy.
+ test.py | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 test.py
+
+C:\Users\tomas\Desktop\test_repo>git checkout master
+Switched to branch 'master'
+
+C:\Users\tomas\Desktop\test_repo>git remote add origin https://github.com/FPLTomeczek/test.git
+
+C:\Users\tomas\Desktop\test_repo>git checkout master
+Already on 'master'
+
+C:\Users\tomas\Desktop\test_repo>git push -u origin master
+Enumerating objects: 9, done.
+Counting objects: 100% (9/9), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (9/9), 714 bytes | 714.00 KiB/s, done.
+Total 9 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/FPLTomeczek/test.git
+ * [new branch]      master -> master
+branch 'master' set up to track 'origin/master'.
+
+C:\Users\tomas\Desktop\test_repo>git pull origin master
+remote: Enumerating objects: 5, done.
+remote: Counting objects: 100% (5/5), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), 659 bytes | 82.00 KiB/s, done.
+From https://github.com/FPLTomeczek/test
+ * branch            master     -> FETCH_HEAD
+   8d729a1..eaba91b  master     -> origin/master
+Updating 8d729a1..eaba91b
+Fast-forward
+ readme.md | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+C:\Users\tomas\Desktop\test_repo>git add .
+
+C:\Users\tomas\Desktop\test_repo>git commit -m "change"
+[master 77507ce] change
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+C:\Users\tomas\Desktop\test_repo>git push
+To https://github.com/FPLTomeczek/test.git
+ ! [rejected]        master -> master (fetch first)
+error: failed to push some refs to 'https://github.com/FPLTomeczek/test.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+C:\Users\tomas\Desktop\test_repo>git pull origin master
+remote: Enumerating objects: 5, done.
+remote: Counting objects: 100% (5/5), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), 669 bytes | 83.00 KiB/s, done.
+From https://github.com/FPLTomeczek/test
+ * branch            master     -> FETCH_HEAD
+   eaba91b..2baba0e  master     -> origin/master
+Auto-merging readme.md
+CONFLICT (content): Merge conflict in readme.md
+Automatic merge failed; fix conflicts and then commit the result.
+
+C:\Users\tomas\Desktop\test_repo>git add .
+
+C:\Users\tomas\Desktop\test_repo>git commit -m "change"
+[master 7287b05] change
+
+C:\Users\tomas\Desktop\test_repo>git push
+Enumerating objects: 10, done.
+Counting objects: 100% (10/10), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (6/6), 573 bytes | 573.00 KiB/s, done.
+Total 6 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/FPLTomeczek/test.git
+   2baba0e..7287b05  master -> master
+
+C:\Users\tomas\Desktop\test_repo>git add.
+git: 'add.' is not a git command. See 'git --help'.
+
+The most similar command is
+        add
+
+C:\Users\tomas\Desktop\test_repo>git add .
+
+C:\Users\tomas\Desktop\test_repo>git commit -m "change on line 3"
+[master 9dc3d6e] change on line 3
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+C:\Users\tomas\Desktop\test_repo>git push
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 298 bytes | 298.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/FPLTomeczek/test.git
+   7287b05..9dc3d6e  master -> master
+
+C:\Users\tomas\Desktop\test_repo>git checkout new
+Switched to branch 'new'
+
+C:\Users\tomas\Desktop\test_repo>git push origin new
+Enumerating objects: 9, done.
+Counting objects: 100% (8/8), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (5/5), 566 bytes | 566.00 KiB/s, done.
+Total 5 (delta 0), reused 0 (delta 0), pack-reused 0
+remote:
+remote: Create a pull request for 'new' on GitHub by visiting:
+remote:      https://github.com/FPLTomeczek/test/pull/new/new
+remote:
+To https://github.com/FPLTomeczek/test.git
+ * [new branch]      new -> new
